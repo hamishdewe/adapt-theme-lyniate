@@ -1,7 +1,7 @@
 // @import "https://s3-us-west-2.amazonaws.com/course-assets-edu.rhapsody.global/lyniate.less";
 
 @lyniate-green: #4fbc22;
-
+@rhapsody-light-blue: #67addf;
 
 .drawer__item-open.is-search {
     color: white;
@@ -51,53 +51,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem !important;
 }
 
-/* CodeMirror */
-.CodeMirror {
-  height: auto;
-  border: 1px solid lightgrey;
-  .CodeMirror-vscrollbar {
-    display: none !important;
-  }
-  .CodeMirror-linenumber.CodeMirror-gutter-elt {
-    background-color: #efefef;
-  }
-  .CodeMirror-gutters {
-    height: 100% !important;
-  }
-  &.no-linenumber {
-    .CodeMirror-linenumber {
-      display: none;
-      width: 0;
-    }
-    .CodeMirror-gutters {
-      display: none;
-    }
-    .CodeMirror-sizer {
-      left: -20px;
-    }
-  }
-}
-.cm-s-default {
-  .cm-string-2 {
-      color: #D39F38;
-  }
-  .cm-property {
-      color: #377E7F;
-  }
-  .token.keyword,
-  .cm-keyword {
-      color: #0B00F5;
-  }
-  .cm-def {
-      color: inherit;
-  }
-  .cm-comment {
-      color: #377E22;
-  }
-  .cm-string {
-      color: #EA3323;
-  }
-}
 pre > code {
   border: none;
   padding: 0;
@@ -119,15 +72,7 @@ svg tspan {
   font-family: @font-family;
 }
 
-div.hiliteme pre {
-  margin-left: -1rem !important;
-  span:first-child:before {
-    content: '  ';
-  }
-}
-
 .code-block-mixin() {
-  padding: 1em 0 !important;
   border: 1px solid gray;
   border-left-width: 12px;
 }
@@ -136,9 +81,6 @@ pre[class*=language-] {
   code {
     font-size: 1.1em !important;
     font-family: monospace;
-  }
-  > code > *:first-child {
-    margin-left: 1.2em;
   }
 }
 .notify pre code[class*=language-] {
@@ -580,5 +522,32 @@ img {
   }
   &__details-inner {
     display: flow-root;
+  }
+}
+
+
+// Contents
+@rhapsody-light-blue: #67addf;
+.contents {
+  .contents-progress-indicator {
+    border: 1px solid white;
+    box-sizing: content-box;
+  }
+  .contents-progress-indicator-complete {
+    .contents-indicator-bar {
+      background-color: @corepoint-green;
+    }
+  }
+  .contents-progress-indicator-incomplete:not(:hover) {
+    background-color: @rhapsody-light-blue;
+  }
+  .contents-page.active button:not(.is-disabled):not(.is-locked) {
+      cursor: pointer;
+  }
+  .contents-item-title {
+    &.highlight {
+      background-color: @rhapsody-light-blue;
+      color: white;
+    }
   }
 }

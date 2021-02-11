@@ -8,6 +8,11 @@ define([
   
   function onPageView() {
     Prism.highlightAll();
+    
+    var blocks = $('code[class*=language-]');
+    for (var i = 0; i < blocks.length; i++) {
+      blocks[i].innerHTML = blocks[i].innerHTML.replace(/\n\s{2}/g, '\n');
+    }
   }
 
   function onDataReady() {
