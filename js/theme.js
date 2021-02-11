@@ -5,14 +5,22 @@ define([
   './themeBlockView',
   './themeView'
 ], function(Adapt, ThemePageView, ThemeArticleView, ThemeBlockView, ThemeView) {
+  
+  function onPageView() {
+    Prism.highlightAll();
+  }
 
   function onDataReady() {
+    // Add Prism
+    $('head').append("<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js'></script>");
+    $('head').append("<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js'></script>");
+    $('head').append("<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css'>");
     $('html').addClass(Adapt.course.get('_courseStyle'));
   }
 
   function onPostRender(view) {
     var model = view.model;
-    var theme = model.get('_vanilla');
+    var theme = model.get('_lyniate');
 
     if (!theme) return;
 
@@ -29,10 +37,12 @@ define([
       default:
         new ThemeView({ model: new Backbone.Model(theme), el: view.$el });
     }
+    
   }
 
   Adapt.on({
     'app:dataReady': onDataReady,
-    'pageView:postRender articleView:postRender blockView:postRender': onPostRender
+    'pageView:postRender articleView:postRender blockView:postRender': onPostRender,
+    'pageView:ready': onPageView
   });
 });

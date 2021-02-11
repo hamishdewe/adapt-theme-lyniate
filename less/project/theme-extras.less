@@ -49,6 +49,24 @@
 
 }
 
+// Add ticks to completed blocks
+.block-add-ticks .is-complete .block__title-inner::before {
+    display: inline-block;
+    color: green;
+    content: "\e944";
+    font-family: 'lyniate';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 // --------------------------------------------------
 // Block
 // --------------------------------------------------
@@ -155,40 +173,39 @@
 
 .block-color-mixin(@color, @color-inverted) {
 
-.block-color.@{color} {
-  background-color: @@color;
-  color: @@color-inverted;
+  .block-color.@{color} {
+    background-color: @@color;
+    color: @@color-inverted;
 
-  .block,
-  .component {
-    &__title,
-    &__body a,
-    &__instruction a {
-      color: @@color-inverted;
+    .block,
+    .component {
+      &__title,
+      &__body a,
+      &__instruction a {
+        color: @@color-inverted;
+      }
+    }
+
+    .pagelevelprogress {
+      &__indicator {
+        border-color: @@color-inverted;
+      }
+      &__indicator-inner {
+        background-color: @@color;
+      }
+      &__indicator-bar {
+        background-color: @@color-inverted;
+      }
+    }
+
+    .narrative {
+      &__progress {
+        background-color: fade(@@color-inverted, 50%);
+      }
+
+      &__progress.is-selected {
+        background-color: @@color-inverted;
+      }
     }
   }
-
-  .pagelevelprogress {
-    &__indicator {
-      border-color: @@color-inverted;
-    }
-    &__indicator-inner {
-      background-color: @@color;
-    }
-    &__indicator-bar {
-      background-color: @@color-inverted;
-    }
-  }
-
-  .narrative {
-    &__progress {
-      background-color: fade(@@color-inverted, 50%);
-    }
-
-    &__progress.is-selected {
-      background-color: @@color-inverted;
-    }
-  }
-}
-
 }

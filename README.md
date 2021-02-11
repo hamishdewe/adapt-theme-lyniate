@@ -1,41 +1,41 @@
-# adapt-contrib-vanilla
+# adapt-theme-lyniate
 
-**Vanilla** is a *theme* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework).
+**Lyniate** is a *theme* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework).
 
-<img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/vanilla01.jpg" alt="sample colors from the vanilla theme">
+<img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/lyniate01.jpg" alt="sample colors from the lyniate theme">
 
-It provides specific values to styles, including colors, padding, margins, and assets such as fonts and background images. [Visit the **Vanilla** wiki](https://github.com/adaptlearning/adapt-contrib-vanilla/wiki) for more information about its functionality and for explanations of key properties.
+It provides specific values to styles, including colors, padding, margins, and assets such as fonts and background images. [Visit the **Lyniate** wiki](https://github.com/adaptlearning/adapt-theme-lyniate/wiki) for more information about its functionality and for explanations of key properties.
 
 ## Installation
 
-As Adapt's *[core theme](https://github.com/adaptlearning/adapt_framework/wiki/Core-Plug-ins-in-the-Adapt-Learning-Framework#theme),* **Vanilla** is included with the [installation of the Adapt framework](https://github.com/adaptlearning/adapt_framework/wiki/Manual-installation-of-the-Adapt-framework#installation) and the [installation of the Adapt authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-Adapt-Origin).
+As Adapt's *[core theme](https://github.com/adaptlearning/adapt_framework/wiki/Core-Plug-ins-in-the-Adapt-Learning-Framework#theme),* **Lyniate** is included with the [installation of the Adapt framework](https://github.com/adaptlearning/adapt_framework/wiki/Manual-installation-of-the-Adapt-framework#installation) and the [installation of the Adapt authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-Adapt-Origin).
 
-* If **Vanilla** has been uninstalled from the Adapt framework, it may be reinstalled.
+* If **Lyniate** has been uninstalled from the Adapt framework, it may be reinstalled.
 With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run the following from the command line:
-`adapt install adapt-contrib-vanilla`
+`adapt install adapt-theme-lyniate`
 
     Alternatively, this component can also be installed by adding the following line of code to the *adapt.json* file:
-    `"adapt-contrib-vanilla": "*"`
+    `"adapt-theme-lyniate": "*"`
     Then running the command:
     `adapt install`
     (This second method will reinstall all plug-ins listed in *adapt.json*.)
 
-* If **Vanilla** has been uninstalled from the Adapt authoring tool, it may be reinstalled using the [Plug-in Manager](https://github.com/adaptlearning/adapt_authoring/wiki/Plugin-Manager).
+* If **Lyniate** has been uninstalled from the Adapt authoring tool, it may be reinstalled using the [Plug-in Manager](https://github.com/adaptlearning/adapt_authoring/wiki/Plugin-Manager).
 
 ## Uninstallation
 
-The Adapt framework does not allow the installation of more than one theme at a time. In order to replace **Vanilla** it must be uninstalled. With the root of your framework installation as your current working directory, run the following command:
-`adapt uninstall adapt-contrib-vanilla`
+The Adapt framework does not allow the installation of more than one theme at a time. In order to replace **Lyniate** it must be uninstalled. With the root of your framework installation as your current working directory, run the following command:
+`adapt uninstall adapt-theme-lyniate`
 
 ## Settings overview
 
-Unlike most Adapt plug-ins, the **Vanilla** theme has no attributes that are required to be configured in the course JSON files. There is, however, additional functionality available to apply background images and supporting styles for pages, articles and blocks as desired. These attributes are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-vanilla/blob/master/example.json) and available as configurable attributes in the Adapt authoring tool.
+Unlike most Adapt plug-ins, the **Lyniate** theme has no attributes that are required to be configured in the course JSON files. There is, however, additional functionality available to apply background images and supporting styles for pages, articles and blocks as desired. These attributes are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-theme-lyniate/blob/master/example.json) and available as configurable attributes in the Adapt authoring tool.
 
-Alongside this, the [*example.json*](https://github.com/adaptlearning/adapt-contrib-vanilla/blob/master/example.json#L86) contains a collection of custom classes that Adapt and the Vanilla theme support as standard. These classes are mostly designed to provide additional visual options to increase flexibility.
+Alongside this, the [*example.json*](https://github.com/adaptlearning/adapt-theme-lyniate/blob/master/example.json#L86) contains a collection of custom classes that Adapt and the Lyniate theme support as standard. These classes are mostly designed to provide additional visual options to increase flexibility.
 
-The **Vanilla** theme also exposes [*colour variables*](https://github.com/adaptlearning/adapt-contrib-vanilla/blob/master/less/_defaults/colors.less) in the Adapt authoring tool for theme editing. This feature allows you to apply and save 'preset' theme styles.
+The **Lyniate** theme also exposes [*colour variables*](https://github.com/adaptlearning/adapt-theme-lyniate/blob/master/less/_defaults/colors.less) in the Adapt authoring tool for theme editing. This feature allows you to apply and save 'preset' theme styles.
 
-**\_vanilla** (object): The following attributes configure the defaults for **Vanilla**. These include **\_backgroundImage**, **\_backgroundStyles** and **\_minimumHeights**. Global attributes are available at page, article and block level.
+**\_lyniate** (object): The following attributes configure the defaults for **Lyniate**. These include **\_backgroundImage**, **\_backgroundStyles** and **\_minimumHeights**. Global attributes are available at page, article and block level.
 
 #### Global background image
 >**\_backgroundImage** (object): The backgroundImage object that contains values for **\_large**, **\_medium** and **\_small**.
@@ -85,7 +85,7 @@ Auto: The background image is displayed in its original size. Cover: Resize the 
 #### **blocks.json**
 >**\_isDividerBlock** (boolean): - Determines whether the CSS class `is-divider-block` will be applied. Acceptable values are `true` and `false`.
 
-Visit the [**Vanilla** wiki](https://github.com/adaptlearning/adapt-contrib-vanilla/wiki) for more information about how to use and manipulate the theme.
+Visit the [**Lyniate** wiki](https://github.com/adaptlearning/adapt-theme-lyniate/wiki) for more information about how to use and manipulate the theme.
 
 ## Structure
 
@@ -104,7 +104,7 @@ Visit the [**Vanilla** wiki](https://github.com/adaptlearning/adapt-contrib-vani
 
 ## Templates
 
-**Vanilla** supports customisation for the rendering of various Adapt elements through the use of [Handlebars](http://handlebarsjs.com/) templates. The file name of the template indicates the element it affects.
+**Lyniate** supports customisation for the rendering of various Adapt elements through the use of [Handlebars](http://handlebarsjs.com/) templates. The file name of the template indicates the element it affects.
 
 ## Limitations
 
@@ -113,7 +113,7 @@ No known limitations.
 ----------------------------
 **Version number:**  5.3.0  <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>  
 **Framework versions:**  5.3+  
-**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-vanilla/graphs/contributors)  
+**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-theme-lyniate/graphs/contributors)  
 **Accessibility support:** WAI AA  
 **RTL support:** Yes  
 **Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 14 for macOS/iOS/iPadOS, Opera  

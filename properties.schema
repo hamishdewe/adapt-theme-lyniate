@@ -55,7 +55,7 @@
             "title": "Heading colour",
             "type": "string",
             "inputType": "ColourPicker",
-            "default": "#36CDE8",
+            "default": "#7C1D93",
             "help": "Global title colour."
           },
           "heading-color-inverted": {
@@ -77,7 +77,7 @@
             "title": "Item colour",
             "type": "string",
             "inputType": "ColourPicker",
-            "default": "#36CDE8",
+            "default": "#7C1D93",
             "help": "Defines the clickable areas or points of interest in components."
           },
           "item-color-inverted": {
@@ -201,7 +201,7 @@
             "title": "Validation error colour",
             "type": "string",
             "inputType": "ColourPicker",
-            "default": "#ff0000",
+            "default": "#FF0000",
             "help": "Defines the question marking error colour."
           },
           "validation-error-inverted": {
@@ -412,7 +412,7 @@
             "title": "Notify background colour",
             "type": "string",
             "inputType": "ColourPicker",
-            "default": "#36CDE8"
+            "default": "#53C4E1"
           },
           "notify-inverted": {
             "title": "Notify background colour - inverted",
@@ -676,7 +676,7 @@
         "contentobject": {
           "type": "object",
           "properties": {
-            "_vanilla": {
+            "_lyniate": {
               "type": "object",
               "required": false,
               "properties": {
@@ -879,7 +879,7 @@
         "article": {
           "type": "object",
           "properties": {
-            "_vanilla": {
+            "_lyniate": {
               "type": "object",
               "required": false,
               "properties": {
@@ -983,7 +983,7 @@
         "block": {
           "type": "object",
           "properties": {
-            "_vanilla": {
+            "_lyniate": {
               "type": "object",
               "required": false,
               "properties": {
