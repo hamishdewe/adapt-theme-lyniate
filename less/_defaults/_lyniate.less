@@ -1,5 +1,3 @@
-// @import "https://s3-us-west-2.amazonaws.com/course-assets-edu.rhapsody.global/lyniate.less";
-
 @lyniate-green: #4fbc22;
 @rhapsody-light-blue: #67addf;
 
@@ -121,7 +119,7 @@ html {
 @menu-transparency: rgba(255,255,255,0.975);
 .menu__header-inner {
   width: 100%;
-  padding: 1rem;
+  padding: 1rem !important;
   background-color: @menu-transparency;
   border-radius: 5px;
   margin-bottom: 1rem;
@@ -373,11 +371,24 @@ img {
     top: @contents-padding;
     height: calc(100% - @contents-padding);
     z-index: 75;
-    .contents-item-title-inner,
-    .contents .contents-landing-page-title-inner,
-    .contents .contents-page-title-inner {
+    border-right: 1px solid @heading-color;
+    border-bottom: 1px solid @heading-color;
+    .contents-landing-page-title-inner,
+    .contents-page-title-inner {
       width: initial;
       margin-left: 2rem;
+    }
+    .contents-item-title {
+      &-inner {
+        float: left;
+      }
+      padding-left: 3rem;
+    }
+    .contents-article-title {
+      .contents-item-title-inner {
+        width: 205px !important;
+        margin-left: 0;
+      }
     }
     button.contents-landing-page-title:before {
         content: '\e927';
@@ -546,8 +557,8 @@ img {
   }
   .contents-item-title {
     &.highlight {
-      background-color: @rhapsody-light-blue;
-      color: white;
+      background-color: @rhapsody-light-blue !important;
+      color: white !important;
     }
   }
 }
