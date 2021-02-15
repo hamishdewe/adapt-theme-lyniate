@@ -7,7 +7,10 @@ define([
 ], function(Adapt, ThemePageView, ThemeArticleView, ThemeBlockView, ThemeView) {
   
   function onPageView() {
-    Prism.highlightAll(); 
+    var components = $('div.component:not(".no-prism"):not(".prism-preformatted")')
+    $(components).each((idx, component) => {
+      Prism.highlightAllUnder(component)
+    });
     
     var blocks = $('code[class*=language-]');
     for (var i = 0; i < blocks.length; i++) {
