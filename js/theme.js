@@ -45,9 +45,22 @@ define([
     if (!titleEl) {
       return;
     }
-    var subject = encodeURI(`Comment on ${type} '${titleEl.innerText}'`);
-    var body = encodeURI(`\r\n\r\nLink: ${Adapt.course.attributes._lyniate._editor}/#editor/${courseId}/${type}/${itemId}/edit`);
-    $(`<a style="display:none" class="comment-link" title="Comment on ${type} '${titleEl.innerText}'" href="mailto:${Adapt.course.attributes._lyniate._mailto}?subject=${subject}&body=${body}"></a>`).insertAfter(titleEl);
+    var subject = parsePlaceholders(Adapt.course.attributes._lyniate._subject, itemId, type, titleEl.innerText);
+    var body = parsePlaceholders(Adapt.course.attributes._lyniate._body, itemId, type, titleEl.innerText);
+    // var subject = encodeURI(`Comment on ${type} '${titleEl.innerText}'`);
+    // var body = encodeURI(`\r\n\r\nLink: ${Adapt.course.attributes._lyniate._editor}/#editor/${courseId}/${type}/${itemId}/edit`);
+    $(`<a style="display:none" class="comment-link" title="${subject}" href="mailto:${Adapt.course.attributes._lyniate._mailto}?subject=${encodeURI(subject)}&body=${encodeURI(body)}"></a>`).insertAfter(titleEl);
+  }
+  
+  function parsePlaceholders(text, id, type, title) {
+    text = text.replace(/\[\[editor\]\]/g, Adapt.course.attributes._lyniate._editor);
+    text = text.replace(/\[\[type\]\]/g, type); 
+    text = text.replace(/\[\[title\]\]/g, title);
+    text = text.replace(/\[\[id\]\]/g, id);
+    text = text.replace(/\[\[course.id\]\]/g, Adapt.config.attributes._courseId);
+    text = text.replace(/\[\[course.title\]\]/g, Adapt.course.attributes.title);
+    text = text.replace(/\[\[course.displayTitle\]\]/g, Adapt.course.attributes.displayTitle);
+    return text;
   }
 
   function onDataReady() {
