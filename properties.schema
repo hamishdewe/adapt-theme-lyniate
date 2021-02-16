@@ -671,7 +671,43 @@
           "type": "object"
         },
         "course": {
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "_lyniate": {
+              "type": "object",
+              "required": false,
+              "legend": "Comments",
+              "properties": {
+                "_comments": {
+                  "type": "boolean",
+                  "required": false,
+                  "title": "Comments enabled",
+                  "default": false,
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Allows display of comments links in generated course"
+                },
+                "_mailto": {
+                  "type": "string",
+                  "required": false,
+                  "title": "Email",
+                  "default": "",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "Send comments to this email address"
+                },
+                "_editor": {
+                  "type": "string",
+                  "required": false,
+                  "title": "Editor path",
+                  "default": "https://lyniate.adaptunlimited.com",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "URL of the Adapt Authoring tool"
+                }
+              }
+            }
+          }
         },
         "contentobject": {
           "type": "object",

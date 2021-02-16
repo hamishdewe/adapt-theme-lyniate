@@ -544,3 +544,14 @@ img {
     }
   }
 }
+
+// Display comments
+a.comment-link {
+    display: initial !important;
+    font-size: .5em;
+    text-decoration: none;
+    &:before {
+      content: "\e926";
+      font-family: 'vanilla';
+    }
+}
