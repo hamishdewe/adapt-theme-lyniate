@@ -703,7 +703,7 @@
                   "default": "Comment on [[type]] [[title]]",
                   "inputType": "Text",
                   "validators": [],
-                  "help": "Subject line for email. Use placeholders [[editor]], [[type]], [[title]], [[id]], [[course.id]], [[course.title]], [[course.displayTitle]]"
+                  "help": "Subject line for email. Use placeholders [[editor]], [[type]], [[title]], [[id]], [[course.id]], [[course.title]], [[course.displayTitle]]."
                 },
                 "_body": {
                   "type": "string",
@@ -712,13 +712,13 @@
                   "default": "Link: [[editor]]/#editor/[[course.id]]/[[type]]/[[id]]/edit",
                   "inputType": "Text",
                   "validators": [],
-                  "help": "Body of the email. Use placeholders [[editor]], [[type]], [[title]], [[id]], [[course.id]], [[course.title]], [[course.displayTitle]]"
+                  "help": "Body of the email. Use placeholders [[editor]], [[type]], [[title]], [[id]], [[course.id]], [[course.title]], [[course.displayTitle]], [[device]]. The edit link and device information are appended by default, so there's no need to add them here."
                 },
                 "_editor": {
                   "type": "string",
                   "required": false,
                   "title": "Editor path",
-                  "default": "https://lyniate.adaptunlimited.com",
+                  "default": "https://lyniate.adaptunlimited.net",
                   "inputType": "Text",
                   "validators": [],
                   "help": "URL of the Adapt Authoring tool"
