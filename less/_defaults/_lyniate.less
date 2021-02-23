@@ -80,7 +80,7 @@ html {
 }
 
 #app {
-  background-color: rgba(255,255,255,0.75);
+  background-color: transparent !important;
   padding-top: 3.5rem;
   .menu {
     min-height: calc(100vh - 3.5rem);
@@ -401,7 +401,6 @@ img {
   &__body {
     min-width: 8rem;
     max-width: calc(100% - 9rem);
-    height: 225px;
     overflow-y: auto;
     float:left;
   }
@@ -554,4 +553,20 @@ a.comment-link {
       content: "\e926";
       font-family: 'vanilla';
     }
+}
+
+.image-background(@url; @background-position: "center center") { 
+  &:before { 
+    content: ''; 
+    position: fixed; 
+    left: 0; 
+    right: 0; 
+    top: 0; 
+    bottom: 0; 
+    background-image: url(@url); 
+    z-index: -1; 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: @background-position;
+  } 
 }
