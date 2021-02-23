@@ -100,7 +100,7 @@ html {
 }
 
 .article__header-inner {
-  padding: 2rem .5rem 0;
+  padding: 2rem .5rem 0 !important;
   max-width: calc(100% - 112px);
 }
 html.size-small {
@@ -142,11 +142,11 @@ code {
 
 .article {
     margin: 1rem;
-    background-color: rgba(248, 248, 255, 0.1);
-    -webkit-box-shadow: 5px 5px 5px 0px rgb(204 204 204);
-    -moz-box-shadow: 5px 5px 5px 0px rgba(204,204,204,1);
-    box-shadow: 5px 5px 5px 0px rgb(204 204 204);
-    border: 1px solid rgba(223, 223, 229, 1);
+    background-color: white;
+    -webkit-box-shadow: 5px 5px 5px 0px @lyniate-grey;
+    -moz-box-shadow: 5px 5px 5px 0px @lyniate-grey;
+    box-shadow: 5px 5px 5px 0px @lyniate-grey;
+    border: 1px solid @lyniate-grey;
 }
 .article ~.article {
     margin-top: 4rem;
@@ -612,7 +612,6 @@ a.comment-link {
 // Add 'End of page' marker
 div.page:after, div.menu:after {
     content: '\25B2  End of page';
-    background-color: rgba(255,255,255,0.975);
     width: 100%;
     display: inline-block;
     text-align: center;
