@@ -209,3 +209,19 @@
     }
   }
 }
+
+// Image background mixin
+.image-background(@url) { 
+  &:before { 
+    content: ''; 
+    position: fixed; 
+    left: 0; 
+    right: 0; 
+    top: 0; 
+    bottom: 0; 
+    background-image: url(@url); 
+    z-index: -1; 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+  } 
+}
