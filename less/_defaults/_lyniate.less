@@ -387,8 +387,20 @@ img {
 // Menu
 .boxmenu-item {
   width: 100% !important;
+  &:first-of-type {
+    .menuitem__inner {
+      border-radius: 5px 5px 0 0;
+    }
+  }
+  &:last-of-type {
+    .menuitem__inner {
+      border-radius: 0 0 5px 5px;
+    }
+  }
   &__inner {
     border: 1px solid lightgrey !important;
+    border-radius: 0;
+    margin: 0 0.5rem;
   }
   &__body {
       
