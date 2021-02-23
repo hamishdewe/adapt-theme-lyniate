@@ -46,7 +46,13 @@ define([
       return;
     }
     var subject = parsePlaceholders(Adapt.course.attributes._lyniate._subject, itemId, type, titleEl.innerText);
-    var body = parsePlaceholders(Adapt.course.attributes._lyniate._body, itemId, type, titleEl.innerText);
+    var body = 
+      parsePlaceholders(Adapt.course.attributes._lyniate._body) + 
+      parsePlaceholders(`
+        
+        Link: [[editor]]/#editor/[[course.id]]/[[type]]/[[id]]/edit
+        
+        Device: [[device]]`, itemId, type, titleEl.innerText);
     // var subject = encodeURI(`Comment on ${type} '${titleEl.innerText}'`);
     // var body = encodeURI(`\r\n\r\nLink: ${Adapt.course.attributes._lyniate._editor}/#editor/${courseId}/${type}/${itemId}/edit`);
     $(`<a style="display:none" class="comment-link" title="${subject}" href="mailto:${Adapt.course.attributes._lyniate._mailto}?subject=${encodeURI(subject)}&body=${encodeURI(body)}"></a>`).insertAfter(titleEl);
@@ -60,6 +66,16 @@ define([
     text = text.replace(/\[\[course.id\]\]/g, Adapt.config.attributes._courseId);
     text = text.replace(/\[\[course.title\]\]/g, Adapt.course.attributes.title);
     text = text.replace(/\[\[course.displayTitle\]\]/g, Adapt.course.attributes.displayTitle);
+    text = text.replace(/\[\[device\]\]/g, `
+      OS: ${Adapt.device.OS} 
+      browser: ${Adapt.device.browser} 
+      osVersion: ${Adapt.device.osVersion} 
+      renderingEngine: ${Adapt.device.renderingEngine} 
+      screenHeight: ${Adapt.device.screenHeight} 
+      screenSize: ${Adapt.device.screenSize} 
+      screenWidth: ${Adapt.device.screenWidth} 
+      touch: ${Adapt.device.touch} 
+      version: ${Adapt.device.version}`);
     return text;
   }
 
