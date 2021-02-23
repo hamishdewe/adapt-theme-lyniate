@@ -1,5 +1,11 @@
-@lyniate-green: #4fbc22;
-@rhapsody-light-blue: #67addf;
+@lyniate-black:			#24211f;
+@rhapsody-purple: 		#28213a;
+@rhapsody-blue: 		#2a7de1;
+@lyniate-grey:				#f4f4f4;
+@lyniate-purple: 			#7c1d93;
+@rhapsody-light-blue: 	#67addf;
+@corepoint-dark-blue: 	#0a1a28;
+@corepoint-green: 		#4fbc22;
 
 .drawer__item-open.is-search {
     color: white;
@@ -10,7 +16,7 @@
   max-width: 8rem;
   width: 100%;
   .pagelevelprogress__indicator-bar {
-      background-color: @lyniate-green !important;
+      background-color: @corepoint-green !important;
   }
 }
 
@@ -107,8 +113,9 @@ html {
   margin-bottom: 1rem;
   max-width: 55.25rem;
 }
-.boxmenu-item__inner {
-  background-color: rgba(255,255,255,0.975);
+.boxmenu-item__inner,
+.menu-item__inner {
+  background-color: @menu-transparency;
 }
 
 .code {
@@ -119,7 +126,7 @@ html {
 
 /* code styling from OH academies */
 code {
-    border: 1px solid gray;
+    border: 1px solid @lyniate-grey;
     background-color: #f8f8f8;
     color: #333;
     margin-top: 5px;
@@ -160,7 +167,7 @@ kbd {
 
 figure,
 .narrative__slider-image {
-    border: 1px solid lightgrey;
+    border: 1px solid @lyniate-grey;
     padding: 1rem;
     background-color: rgba(255,255,255,0.7);
     display: inline-block;
@@ -390,22 +397,27 @@ img {
 }
 
 // Menu
+.menu__item-container {
+  margin: 2rem 0 4rem;
+  .menu-item{ 
+    &:first-of-type {
+      .menu-item__inner {
+        border-radius: 5px 5px 0 0 !important;
+      }
+    }
+    &:last-of-type {
+      .menu-item__inner {
+        border-radius: 0 0 5px 5px !important;
+      }
+    }
+  }
+}
 .boxmenu-item {
   width: 100% !important;
-  &:first-of-type {
-    .menuitem__inner {
-      border-radius: 5px 5px 0 0;
-    }
-  }
-  &:last-of-type {
-    .menuitem__inner {
-      border-radius: 0 0 5px 5px;
-    }
-  }
   &__inner {
-    border: 1px solid lightgrey !important;
-    border-radius: 0;
-    margin: 0 0.5rem;
+    border: 1px solid @lyniate-grey !important;
+    border-radius: 0 !important;
+    margin: 0 0.5rem !important;
   }
   &__body {
       
@@ -477,7 +489,7 @@ img {
     z-index: 75;
     border-right: none;
     border-bottom: none;
-    box-shadow: 5px 0px 5px 0 lightgray;
+    box-shadow: 5px 0px 5px 0 @lyniate-grey;
     .contents-page {
       width: 280px;
       margin-left: 10px;
@@ -573,7 +585,7 @@ a.comment-link {
     }
 }
 
-.image-background(@url; @background-position: "center center") { 
+.image-background(@url; @background-position: center center) { 
   &:before { 
     content: ''; 
     position: fixed; 
@@ -591,7 +603,7 @@ a.comment-link {
 
 // Add 'End of page' marker
 div.page:after, div.menu:after {
-    content: 'End of page';
+    content: '\25B2  End of page';
     background-color: rgba(255,255,255,0.975);
     width: 100%;
     display: inline-block;
