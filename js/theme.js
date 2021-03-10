@@ -21,21 +21,28 @@ define([
     
     // Add comment links
     window.Adapt = window.Adapt || Adapt;
-    if (!Adapt.course.attributes._lyniate._comments || !Adapt.course.attributes._lyniate._mailto || !Adapt.course.attributes._lyniate._editor) {
-      return;
+    if (Adapt.course.attributes._lyniate._comments._enabled && !Adapt.course.attributes._lyniate._comments._mailto && !Adapt.course.attributes._lyniate._comments._editor) {
+      $($('div.page')).each((idx, item) => {
+        addCommentLink(item, 'page');
+      });
+      $($('div.article')).each((idx, item) => {
+        addCommentLink(item, 'article');
+      });
+      $($('div.block')).each((idx, item) => {
+        addCommentLink(item, 'block');
+      });
+      $($('div.component')).each((idx, item) => {
+        addCommentLink(item, 'component');
+      });
+      
+      // Populate Fancybox
+      $().fancybox({
+          selector: 'figure',
+          arrows: false,
+          infobar: false,
+          toolbar: false
+      });
     }
-    $($('div.page')).each((idx, item) => {
-      addCommentLink(item, 'page');
-    });
-    $($('div.article')).each((idx, item) => {
-      addCommentLink(item, 'article');
-    });
-    $($('div.block')).each((idx, item) => {
-      addCommentLink(item, 'block');
-    });
-    $($('div.component')).each((idx, item) => {
-      addCommentLink(item, 'component');
-    });
   }
   
   function addCommentLink(el, type) {
@@ -45,14 +52,14 @@ define([
     if (!titleEl) {
       return;
     }
-    var subject = parsePlaceholders(Adapt.course.attributes._lyniate._subject, itemId, type, titleEl.innerText);
+    var subject = parsePlaceholders(Adapt.course.attributes._comments._subject, itemId, type, titleEl.innerText);
     var body = 
-      parsePlaceholders(Adapt.course.attributes._lyniate._body) + 
+      parsePlaceholders(Adapt.course.attributes._comments._body) + 
       parsePlaceholders(`
         
-        Link: [[editor]]/#editor/[[course.id]]/[[type]]/[[id]]/edit
+Link: [[editor]]/#editor/[[course.id]]/[[type]]/[[id]]/edit
         
-        Device: [[device]]`, itemId, type, titleEl.innerText);
+Device: [[device]]`, itemId, type, titleEl.innerText);
     // var subject = encodeURI(`Comment on ${type} '${titleEl.innerText}'`);
     // var body = encodeURI(`\r\n\r\nLink: ${Adapt.course.attributes._lyniate._editor}/#editor/${courseId}/${type}/${itemId}/edit`);
     $(`<a style="display:none" class="comment-link" title="${subject}" href="mailto:${Adapt.course.attributes._lyniate._mailto}?subject=${encodeURI(subject)}&body=${encodeURI(body)}"></a>`).insertAfter(titleEl);
@@ -67,24 +74,31 @@ define([
     text = text.replace(/\[\[course.title\]\]/g, Adapt.course.attributes.title);
     text = text.replace(/\[\[course.displayTitle\]\]/g, Adapt.course.attributes.displayTitle);
     text = text.replace(/\[\[device\]\]/g, `
-      OS: ${Adapt.device.OS} 
-      browser: ${Adapt.device.browser} 
-      osVersion: ${Adapt.device.osVersion} 
-      renderingEngine: ${Adapt.device.renderingEngine} 
-      screenHeight: ${Adapt.device.screenHeight} 
-      screenSize: ${Adapt.device.screenSize} 
-      screenWidth: ${Adapt.device.screenWidth} 
-      touch: ${Adapt.device.touch} 
-      version: ${Adapt.device.version}`);
+OS: ${Adapt.device.OS} 
+browser: ${Adapt.device.browser} 
+osVersion: ${Adapt.device.osVersion} 
+renderingEngine: ${Adapt.device.renderingEngine} 
+screenHeight: ${Adapt.device.screenHeight} 
+screenSize: ${Adapt.device.screenSize} 
+screenWidth: ${Adapt.device.screenWidth} 
+touch: ${Adapt.device.touch} 
+version: ${Adapt.device.version}`);
     return text;
   }
-
+  
   function onDataReady() {
     // Add Prism
     $('head').append("<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js'></script>");
     $('head').append("<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js'></script>");
-    //$('head').append("<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css'>");
+    // Add Fancybox: https://github.com/fancyapps/fancyBox
+    $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />')
+    $('head').append('<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>')
+  
     $('html').addClass(Adapt.course.get('_courseStyle'));
+    
+    if (Adapt.course.attributes._lyniate._completion._enabled && Adapt.course.attributes._lyniate._completion._title && Adapt.course.attributes._lyniate._completion._body) {
+      Adapt.listenTo(Adapt.course, "change:_isComplete", onCourseComplete);
+    }
   }
 
   function onPostRender(view) {
@@ -106,7 +120,13 @@ define([
       default:
         new ThemeView({ model: new Backbone.Model(theme), el: view.$el });
     }
-    
+  }
+  
+  function onCourseComplete() {
+    Adapt.trigger("notify:popup", {
+        title: Adapt.course.attributes._lyniate._completion._title,
+        body: Adapt.course.attributes._lyniate._completion._body
+    });
   }
 
   Adapt.on({
@@ -114,4 +134,5 @@ define([
     'pageView:postRender articleView:postRender blockView:postRender': onPostRender,
     'pageView:ready': onPageView
   });
+  
 });

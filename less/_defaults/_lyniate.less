@@ -81,10 +81,10 @@ html {
 }
 
 #app {
-  background-color: transparent !important;
+  background-color: white !important;
   padding-top: 3.5rem;
   .menu {
-    min-height: calc(100vh - 3.5rem);
+    // min-height: calc(100vh - 3.5rem);
     padding-top: 1rem;
   }
 }
@@ -115,7 +115,7 @@ html.size-small {
 }
 .boxmenu-item__inner,
 .menu-item__inner {
-  background-color: @menu-transparency;
+  background-color: @menu-transparency !important;
 }
 
 .code {
@@ -126,7 +126,7 @@ html.size-small {
 
 /* code styling from OH academies */
 code {
-    border: 1px solid @lyniate-grey;
+    border: 1px solid grey;
     background-color: #f8f8f8;
     color: #333;
     margin-top: 5px;
@@ -251,7 +251,7 @@ img {
   min-width: auto;
   display: inline-block;
   height: auto;
-  width: auto;
+  // width: auto;
   &.narrative__slider-image {
     display: block;
     max-width: 100%;
@@ -414,9 +414,6 @@ img {
     border-radius: 0 !important;
     margin: 0 0.5rem !important;
   }
-  &__body {
-      
-  }
   &__title,
   &__progress {
     min-width: 8rem;
@@ -551,9 +548,17 @@ img {
     box-sizing: content-box;
   }
   .contents-progress-indicator-complete {
-    .contents-indicator-bar {
-      background-color: @corepoint-green;
-    }
+      width: 1rem !important;
+      height: 1rem !important;
+      .contents-indicator-bar {
+          background-color: white !important;
+          &:before {
+              content: '\e944';
+              font-family: 'vanilla';
+              color: @corepoint-green;
+              font-weight: bold;
+          }
+      }
   }
   .contents-progress-indicator-incomplete:not(:hover) {
     background-color: @rhapsody-light-blue;
@@ -603,12 +608,91 @@ a.comment-link {
     background-position: @background-position;
   } 
 }
+.image-tiled-background(@url; @background-size: auto) { 
+  &:before { 
+    content: ''; 
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url(@url); 
+    z-index: -1; 
+    background-size: @background-size; 
+    background-repeat: repeat;
+  } 
+}
 
 // Add 'End of page' marker
-div.page:after, div.menu:after {
-    content: '\25B2  End of page';
-    width: 100%;
-    display: inline-block;
-    text-align: center;
-    padding: 1rem 0;
+div.page:after, 
+div.menu:after {
+  content: '\25B2  End of page';
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  padding: 1rem 0;
+}
+div.menu:after {
+  background-color: @menu-transparency;
+}
+
+.boxmenu-item__body {
+    clear: left;
+}
+.boxmenu-item__details-inner {
+    display: flex;
+    flex-direction: row;
+    &-text {
+        width: calc(100% - 9rem);
+    }
+    &-action {
+        width: 9rem;
+    }
+}
+.boxmenu-item__button-container {
+    max-width: initial;
+}
+
+// #wrapper,
+// div[role="main"] {
+//     position: fixed;
+//     top: 3.5rem;
+//     height: calc(100vh - 3.5rem);
+//     background-size: cover;
+//     overflow: auto;
+//     &.menu {
+//         width: 100%
+//     }
+//     &.page {
+//         max-width: calc(100vw - 280px);
+//     }
+// }
+
+#wrapper .menu {
+    position: fixed;
+    top: 3.5rem;
+    height: calc(100vh - 3.5rem);
+    background-size: cover;
+    overflow: auto;
+    width: 100%
+}
+
+// Always let the featherlight figure display
+figure {
+    display: inline-block !important;
+    cursor: pointer;
+  //   &:before {
+  //     content: '\e95a';
+  //     font-family: 'vanilla';
+  //     position: absolute;
+  //     background: rgba(255,255,255,0.75);
+  //     height: 1.75rem;
+  //     width: 1.75rem;
+  //     text-align: center;
+  //     border-radius: 50%;
+  //     margin: .5rem;
+  //     right: 2.5rem;
+  //     bottom: 2.5rem;
+  //     border: 1px solid #24211f;
+  // }
 }

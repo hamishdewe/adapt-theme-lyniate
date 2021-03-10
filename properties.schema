@@ -676,52 +676,92 @@
             "_lyniate": {
               "type": "object",
               "required": false,
-              "legend": "Comments",
               "properties": {
                 "_comments": {
-                  "type": "boolean",
+                  "type": "object",
                   "required": false,
-                  "title": "Comments enabled",
-                  "default": false,
-                  "inputType": "Checkbox",
-                  "validators": [],
-                  "help": "Allows display of comments links in generated course"
+                  "legend": "Comments",
+                  "properties": {
+                    "_enabled": {
+                      "type": "boolean",
+                      "required": false,
+                      "title": "Comments enabled",
+                      "default": false,
+                      "inputType": "Checkbox",
+                      "validators": [],
+                      "help": "Allows display of comments links in generated course"
+                    },
+                    "_mailto": {
+                      "type": "string",
+                      "required": false,
+                      "title": "Email",
+                      "default": "",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Send comments to this email address"
+                    },
+                    "_subject": {
+                      "type": "string",
+                      "required": false,
+                      "title": "Subject",
+                      "default": "Comment on [[type]] [[title]]",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Subject line for email. Use placeholders [[editor]], [[type]], [[title]], [[id]], [[course.id]], [[course.title]], [[course.displayTitle]]."
+                    },
+                    "_body": {
+                      "type": "string",
+                      "required": false,
+                      "title": "Body",
+                      "default": "Link: [[editor]]/#editor/[[course.id]]/[[type]]/[[id]]/edit",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Body of the email. Use placeholders [[editor]], [[type]], [[title]], [[id]], [[course.id]], [[course.title]], [[course.displayTitle]], [[device]]. The edit link and device information are appended by default, so there's no need to add them here."
+                    },
+                    "_editor": {
+                      "type": "string",
+                      "required": false,
+                      "title": "Editor path",
+                      "default": "https://lyniate.adaptunlimited.net",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "URL of the Adapt Authoring tool"
+                    }
+                  }
                 },
-                "_mailto": {
-                  "type": "string",
+                "_completion": {
+                  "type": "object",
                   "required": false,
-                  "title": "Email",
-                  "default": "",
-                  "inputType": "Text",
-                  "validators": [],
-                  "help": "Send comments to this email address"
-                },
-                "_subject": {
-                  "type": "string",
-                  "required": false,
-                  "title": "Subject",
-                  "default": "Comment on [[type]] [[title]]",
-                  "inputType": "Text",
-                  "validators": [],
-                  "help": "Subject line for email. Use placeholders [[editor]], [[type]], [[title]], [[id]], [[course.id]], [[course.title]], [[course.displayTitle]]."
-                },
-                "_body": {
-                  "type": "string",
-                  "required": false,
-                  "title": "Body",
-                  "default": "Link: [[editor]]/#editor/[[course.id]]/[[type]]/[[id]]/edit",
-                  "inputType": "Text",
-                  "validators": [],
-                  "help": "Body of the email. Use placeholders [[editor]], [[type]], [[title]], [[id]], [[course.id]], [[course.title]], [[course.displayTitle]], [[device]]. The edit link and device information are appended by default, so there's no need to add them here."
-                },
-                "_editor": {
-                  "type": "string",
-                  "required": false,
-                  "title": "Editor path",
-                  "default": "https://lyniate.adaptunlimited.net",
-                  "inputType": "Text",
-                  "validators": [],
-                  "help": "URL of the Adapt Authoring tool"
+                  "legend": "Notify on course complete",
+                  "properties": {
+                    "_enabled": {
+                      "type": "boolean",
+                      "required": false,
+                      "title": "Notify enabled",
+                      "default": false,
+                      "inputType": "Checkbox",
+                      "validators": [],
+                      "help": "Allows display of course completion notice"
+                    },
+                    "_title": {
+                      "type": "string",
+                      "required": false,
+                      "title": "Title",
+                      "default": "Course complete",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Notification title"
+                    },
+                    "_body": {
+                      "type": "string",
+                      "required": false,
+                      "title": "Body",
+                      "default": "Congratulations! You've completed this course.",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "Notification body"
+                    }
+                  }
                 }
               }
             }

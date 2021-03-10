@@ -1,4 +1,7 @@
 .hotgraphic {
+  &__pin {
+    border: 1px solid rgba(255,255,255,0.5);
+  }
   &__pin:not(.has-pin-image) {
     background-color: @item-color;
     color: @item-color-inverted;
@@ -23,5 +26,12 @@
     width: @body-size;
     line-height: @body-size;
     text-align: center;
+  }
+  &__widget {
+    padding: 1rem;
+    -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+    -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+    width: fit-content;
   }
 }
