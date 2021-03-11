@@ -66,7 +66,7 @@ Device: [[device]]`, itemId, type, titleEl.innerText);
   }
   
   function parsePlaceholders(text, id, type, title) {
-    text = text.replace(/\[\[editor\]\]/g, Adapt.course.attributes._lyniate._editor);
+    text = text.replace(/\[\[editor\]\]/g, Adapt.course.attributes._lyniate._comments._editor);
     text = text.replace(/\[\[type\]\]/g, type); 
     text = text.replace(/\[\[title\]\]/g, title);
     text = text.replace(/\[\[id\]\]/g, id);
