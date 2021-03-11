@@ -36,11 +36,13 @@ define([
       });
       
       // Populate Fancybox
-      $().fancybox({
-          selector: 'figure',
-          arrows: false,
-          infobar: false,
-          toolbar: false
+      $(document).ready(function () {
+        $().fancybox({
+            selector: 'figure',
+            arrows: false,
+            infobar: false,
+            toolbar: false
+        });
       });
     }
   }
@@ -60,8 +62,6 @@ define([
 Link: [[editor]]/#editor/[[course.id]]/[[type]]/[[id]]/edit
         
 Device: [[device]]`, itemId, type, titleEl.innerText);
-    // var subject = encodeURI(`Comment on ${type} '${titleEl.innerText}'`);
-    // var body = encodeURI(`\r\n\r\nLink: ${Adapt.course.attributes._lyniate._editor}/#editor/${courseId}/${type}/${itemId}/edit`);
     $(`<a style="display:none" class="comment-link" title="${subject}" href="mailto:${Adapt.course.attributes._lyniate._comments._mailto}?subject=${encodeURI(subject)}&body=${encodeURI(body)}"></a>`).insertAfter(titleEl);
   }
   
@@ -87,13 +87,12 @@ version: ${Adapt.device.version}`);
   }
   
   function onDataReady() {
-    // Add Prism
+    // Add Prism for code snippets
     $('head').append("<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js'></script>");
     $('head').append("<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js'></script>");
-    // Add Fancybox: https://github.com/fancyapps/fancyBox
+    // Add Fancybox for lightboxing images: https://github.com/fancyapps/fancyBox
     $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />')
     $('head').append('<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>')
-  
     $('html').addClass(Adapt.course.get('_courseStyle'));
     
     if (Adapt.course.attributes._lyniate._completion._enabled && Adapt.course.attributes._lyniate._completion._title && Adapt.course.attributes._lyniate._completion._body) {
