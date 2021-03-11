@@ -52,9 +52,9 @@ define([
     if (!titleEl) {
       return;
     }
-    var subject = parsePlaceholders(Adapt.course.attributes._comments._subject, itemId, type, titleEl.innerText);
+    var subject = parsePlaceholders(Adapt.course.attributes._lyniate._comments._subject, itemId, type, titleEl.innerText);
     var body = 
-      parsePlaceholders(Adapt.course.attributes._comments._body) + 
+      parsePlaceholders(Adapt.course.attributes._lyniate._comments._body) + 
       parsePlaceholders(`
         
 Link: [[editor]]/#editor/[[course.id]]/[[type]]/[[id]]/edit
@@ -62,7 +62,7 @@ Link: [[editor]]/#editor/[[course.id]]/[[type]]/[[id]]/edit
 Device: [[device]]`, itemId, type, titleEl.innerText);
     // var subject = encodeURI(`Comment on ${type} '${titleEl.innerText}'`);
     // var body = encodeURI(`\r\n\r\nLink: ${Adapt.course.attributes._lyniate._editor}/#editor/${courseId}/${type}/${itemId}/edit`);
-    $(`<a style="display:none" class="comment-link" title="${subject}" href="mailto:${Adapt.course.attributes._lyniate._mailto}?subject=${encodeURI(subject)}&body=${encodeURI(body)}"></a>`).insertAfter(titleEl);
+    $(`<a style="display:none" class="comment-link" title="${subject}" href="mailto:${Adapt.course.attributes._lyniate._comments._mailto}?subject=${encodeURI(subject)}&body=${encodeURI(body)}"></a>`).insertAfter(titleEl);
   }
   
   function parsePlaceholders(text, id, type, title) {
