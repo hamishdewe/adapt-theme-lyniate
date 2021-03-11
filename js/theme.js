@@ -21,7 +21,7 @@ define([
     
     // Add comment links
     window.Adapt = window.Adapt || Adapt;
-    if (Adapt.course.attributes._lyniate._comments._enabled && !Adapt.course.attributes._lyniate._comments._mailto && !Adapt.course.attributes._lyniate._comments._editor) {
+    if (Adapt.course.attributes._lyniate._comments._enabled && Adapt.course.attributes._lyniate._comments._mailto && Adapt.course.attributes._lyniate._comments._editor) {
       $($('div.page')).each((idx, item) => {
         addCommentLink(item, 'page');
       });
