@@ -38,7 +38,7 @@ define([
       // Populate Fancybox
       $(document).ready(function () {
         $().fancybox({
-            selector: 'figure',
+            selector: 'figure, :not(figure) > img, .lightbox',
             arrows: false,
             infobar: false,
             toolbar: false
