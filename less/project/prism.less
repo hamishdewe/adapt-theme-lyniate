@@ -9,7 +9,7 @@ pre[class*="language-"] {
 	color: black;
 	background: none;
 	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-family: monospace;
 	font-size: 1em;
 	text-align: left;
 	white-space: pre;
@@ -26,6 +26,15 @@ pre[class*="language-"] {
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
+	&.line-numbers {
+		.line-numbers-rows {
+			top: -3px;
+			&>span {
+				font-size: 1.15em;
+				// 1em for FF
+			}
+		}
+	}
 }
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
@@ -139,7 +148,6 @@ pre[class*="language-"] {
 	cursor: help;
 }
 
-
 .code-block-mixin() {
   border: 1px solid gray;
   border-left-width: 12px;
@@ -161,4 +169,9 @@ pre[class*=language-] {
     content: '';
     margin-left: 1.2em;
   }
+}
+
+.line-numbers-rows > span {
+    font-size: 1.0em !important;
+    margin-top: 0.04px;
 }
