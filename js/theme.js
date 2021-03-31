@@ -22,26 +22,19 @@ define([
       });
     }
     Prism.hooks.add('after-highlight', (env) => {
-      // env.element - get last span where named line-numbers etc.
-      // var lineNumbersRows = $(env.element).find('.line-numbers-rows');
-      // // do the replace
-      env.element.innerHTML = env.element.innerHTML.replace(/\n\s{2,}?/g, '\n');
+      // env.element.innerHTML = env.element.innerHTML.replace(/\n\s{2,}?/g, '\n');
       if (Adapt.config.attributes._logging._isEnabled) {
         console.log('after-highlight after replace', env);
       }
-      // return the span
-      // if (lineNumbersRows.length > 0) {
-      //   //env.element.appendChild(lineNumbersRows[0]);
-      //   //Prism.hooks.run('line-numbers', env);
-      // }
     });
-    var components = $('div.component:not(".no-prism"):not(".prism-preformatted")');
-    $(components).each((idx, component) => {
-      Prism.highlightAllUnder(component, false, );
-    });
+    // var components = $('div.component:not(.no-prism):not(.prism-preformatted)');
+    // $(components).each((idx, component) => {
+    //   Prism.highlightAllUnder(component, false, );
+    // });
+    PrismHighlightAll();
     
     // Remove extraneous spaces from formatted code blocks
-    // var blocks = $('pre:not(.line-numbers) code[class*=language-]');
+    // var blocks = $('pre:not(.no-prism):not(.prism-preformatted) code[class*=language-]');
     // for (var i = 0; i < blocks.length; i++) {
     //   blocks[i].innerHTML = blocks[i].innerHTML.replace(/\n\s{2,}?/g, '\n');
     // }
@@ -71,6 +64,21 @@ define([
             toolbar: false
         });
       });
+    }
+  }
+  
+  function PrismHighlightAll(parentSelector = 'div.component') {
+    
+    //First highlight
+    var components = $(parentSelector + ':not(.no-prism):not(.prism-preformatted)');
+    $(components).each((idx, component) => {
+      Prism.highlightAllUnder(component, false, );
+    });
+    
+    // Then remove extra spaces
+    var blocks = $(parentSelector + ' pre:not(.no-prism):not(.prism-preformatted) code[class*=language-]');
+    for (var i = 0; i < blocks.length; i++) {
+      blocks[i].innerHTML = blocks[i].innerHTML.replace(/\n\s{2,}?/g, '\n');
     }
   }
   
@@ -407,11 +415,19 @@ version: ${Adapt.device.version}`);
         body: Adapt.course.attributes._lyniate._completion._body
     });
   }
+  
+  function onNotifyPopup(items) {
+      $(items).each((idx, item) => {
+        var id = item.attributes['data-adapt-id'];
+        PrismHighlightAll(`div[data-adapt-id="${id.value}"]`);
+      });
+  }
 
   Adapt.on({
     'app:dataReady': onDataReady,
     'pageView:postRender articleView:postRender blockView:postRender': onPostRender,
-    'pageView:ready': onPageView
+    'pageView:ready': onPageView,
+    'popup:opened': onNotifyPopup
   });
   
 });
