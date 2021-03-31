@@ -419,7 +419,9 @@ version: ${Adapt.device.version}`);
   function onNotifyPopup(items) {
       $(items).each((idx, item) => {
         var id = item.attributes['data-adapt-id'];
-        PrismHighlightAll(`div[data-adapt-id="${id.value}"]`);
+        if (id && id.value) {
+          PrismHighlightAll(`div[data-adapt-id="${id.value}"]`);
+        }
       });
   }
 
