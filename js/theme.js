@@ -424,9 +424,23 @@ version: ${Adapt.device.version}`);
         }
       });
   }
+  
+  function updateOnScreenClasses(view) {
+    var contentObject = view.model
+    var type = contentObject.getTypeGroup()
+    var animation = Adapt.course.attributes._lyniate._animation[`_${type}`]
+    
+    // Only override if override enabled and contentObject does not have local configuration
+    if (animation._isEnabled && contentObject.attributes._onScreen && contentObject.attributes._onScreen._isEnabled !== true) {
+      contentObject.attributes._onScreen._isEnabled = animation._isEnabled
+      contentObject.attributes._onScreen._classes = `${animation._classes} ${animation._animationClass}`
+      contentObject.attributes._onScreen._percentInviewVertical = animation._percentInviewVertical
+    }
+  }
 
   Adapt.on({
     'app:dataReady': onDataReady,
+    'pageView:preRender articleView:preRender blockView:preRender componentView:preRender': updateOnScreenClasses,
     'pageView:postRender articleView:postRender blockView:postRender': onPostRender,
     'pageView:ready': onPageView,
     'popup:opened': onNotifyPopup
