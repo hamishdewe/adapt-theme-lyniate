@@ -629,13 +629,19 @@ a.comment-link {
 }
 
 // Add 'End of page' marker
-div.page:after, 
-div.menu:after {
-  content: '\25B2  End of page';
-  width: 100%;
-  display: inline-block;
-  text-align: center;
-  padding: 1rem 0;
+div.page, 
+div.menu {
+  .menu__inner,
+  .page__inner {
+    min-height: calc(100% - 3.5rem);
+  }
+  &:after {
+    content: '\25B2  End of page';
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding: 1rem 0;
+  }
 }
 div.menu:after {
   background-color: @menu-transparency;
