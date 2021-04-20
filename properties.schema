@@ -706,7 +706,7 @@
                         "_animationClass": {
                           "type": "string",
                           "required": false,
-                          "default": "none",
+                          "default": "fade-in-right",
                           "inputType": {"type":"Select", "options":["none","fade-in","fade-in-left","fade-in-right","fade-in-top","fade-in-bottom"]},
                           "title": "Animation options",
                           "help": ""
@@ -746,7 +746,7 @@
                         "_animationClass": {
                           "type": "string",
                           "required": false,
-                          "default": "none",
+                          "default": "fade-in-right",
                           "inputType": {"type":"Select", "options":["none","fade-in","fade-in-left","fade-in-right","fade-in-top","fade-in-bottom"]},
                           "title": "Animation options",
                           "help": ""
@@ -754,7 +754,7 @@
                         "_percentInviewVertical": {
                           "type": "number",
                           "required": false,
-                          "default": 10,
+                          "default": 5,
                           "title": "Percent in view",
                           "inputType": "Number",
                           "validators": ["number"],
@@ -786,7 +786,7 @@
                         "_animationClass": {
                           "type": "string",
                           "required": false,
-                          "default": "none",
+                          "default": "fade-in-right",
                           "inputType": {"type":"Select", "options":["none","fade-in","fade-in-left","fade-in-right","fade-in-top","fade-in-bottom"]},
                           "title": "Animation options",
                           "help": ""
@@ -794,7 +794,7 @@
                         "_percentInviewVertical": {
                           "type": "number",
                           "required": false,
-                          "default": 50,
+                          "default": 10,
                           "title": "Percent in view",
                           "inputType": "Number",
                           "validators": ["number"],

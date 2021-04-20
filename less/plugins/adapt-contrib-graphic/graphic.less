@@ -3,3 +3,22 @@
     .img-zoom();
   }
 }
+
+// Remove margin where component against container
+.graphic {
+    figure.image {
+        margin: 1rem;
+    }
+    &.is-right,
+    &.is-full {
+        figure.image {
+            margin-right: 0rem;
+        }
+    }
+    &.is-left,
+    &.is-full {
+        figure.image {
+            margin-left: 0rem;
+        }
+    }
+}

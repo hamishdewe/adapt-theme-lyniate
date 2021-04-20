@@ -230,3 +230,27 @@
 .nowrap {
   white-space: nowrap;
 }
+
+// Force 0 margin-top on component__widget
+.widget-margin-top-0 {
+    .component__widget {
+        margin-top: 0rem !important;
+    }
+}
+
+.block-group-head,
+.block-group-body {
+    .block__inner {
+        padding-bottom: 0rem !important;
+    }
+}
+
+.block-group-body,
+.block-group-foot {
+    .block__inner {
+        padding-top: 0rem !important;
+    }
+    .component__widget {
+        margin-top: 0rem !important;
+    }
+}
