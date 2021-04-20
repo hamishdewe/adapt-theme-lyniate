@@ -254,3 +254,19 @@
         margin-top: 0rem !important;
     }
 }
+
+.hotgraphic__pin {
+  animation: item-pulse-animation 2s infinite;
+}
+
+@keyframes item-pulse-animation {
+  0% {
+    background-color: @item-color;
+  }
+  50% {
+    background-color: lighten(@item-color, 15%);
+  }
+  100% {
+    background-color: @item-color;
+  }
+}
