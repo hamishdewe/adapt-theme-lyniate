@@ -786,9 +786,13 @@ li {
 
 // Add title padding for graphics without titles where placed left/right.
 .component:not(:only-child) {
-    .graphic__inner {
+    .graphic__inner,
+    .text__header {
         .graphic__widget:only-child {
             margin-top: 2rem;
+        }
+        .text__body:only-child {
+            margin-top: 4rem;
         }
     }
 }
