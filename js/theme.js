@@ -425,6 +425,30 @@ version: ${Adapt.device.version}`);
       });
   }
   
+  function onPreRender(view) {
+    updateOnScreenClasses(view);
+    
+    if (Adapt.spoor.scorm.scorm && Adapt.spoor.scorm.scorm.version === "1.2") {
+      let api = Adapt.spoor.scorm.scorm.data
+      // let coreChildren = api.get('cmi.core._children').split(',')
+      let student_id = api.get('cmi.core.student_id')
+      let student_name= api.get('cmi.core.student_name')
+      let lesson_location = api.get('cmi.core.lesson_location')
+      let credit = api.get('cmi.core.credit')
+      let lesson_status = api.get('cmi.core.lesson_status')
+      let entry = api.get('cmi.core.entry')
+    
+      view.model.attributes._cmi = { core: {} }
+      view.model.attributes._cmi.core.student_id = typeof(student_id) !== undefined ? student_id : null
+      view.model.attributes._cmi.core.student_name = typeof(student_name) !== undefined ? student_name : null
+      view.model.attributes._cmi.core.lesson_location = typeof(lesson_location) !== undefined ? lesson_location : null
+      view.model.attributes._cmi.core.credit = typeof(credit) !== undefined ? credit : null
+      view.model.attributes._cmi.core.lesson_status = typeof(lesson_status) !== undefined ? lesson_status : null
+      view.model.attributes._cmi.core.entry = typeof(entry) !== undefined ? entry : null
+    }
+  }
+
+  
   function updateOnScreenClasses(view) {
     var contentObject = view.model
     var type = contentObject.getTypeGroup()
@@ -442,7 +466,8 @@ version: ${Adapt.device.version}`);
 
   Adapt.on({
     'app:dataReady': onDataReady,
-    'pageView:preRender articleView:preRender blockView:preRender componentView:preRender': updateOnScreenClasses,
+    'pageView:preRender articleView:preRender blockView:preRender componentView:preRender menuView:preRender': onPreRender,
+    // 'pageView:preRender': onPreRender,
     'pageView:postRender articleView:postRender blockView:postRender': onPostRender,
     'pageView:ready': onPageView,
     'popup:opened': onNotifyPopup

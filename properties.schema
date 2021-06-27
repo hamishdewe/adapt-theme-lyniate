@@ -659,6 +659,54 @@
             "inputType": "ColourPicker",
             "default": "#FFFFFF",
             "help": "Defines the Shadow text / icon colour. Should be a colour that provides good contrast against the Shadow colour."
+          },
+          "notice-info": {
+            "title": "Info notice colour",
+            "type": "string",
+            "inputType": "ColourPicker",
+            "default": "#1a81f4"
+          },
+          "notice-info-inverted": {
+            "title": "Info notice colour - inverted",
+            "type": "string",
+            "inputType": "ColourPicker",
+            "default": "#FFFFFF"
+          },
+          "notice-note": {
+            "title": "Note notice colour",
+            "type": "string",
+            "inputType": "ColourPicker",
+            "default": "#7340E4"
+          },
+          "notice-note-inverted": {
+            "title": "Note notice colour - inverted",
+            "type": "string",
+            "inputType": "ColourPicker",
+            "default": "#FFFFFF"
+          },
+          "notice-tip": {
+            "title": "Tip notice colour",
+            "type": "string",
+            "inputType": "ColourPicker",
+            "default": "#23c5bf"
+          },
+          "notice-tip-inverted": {
+            "title": "Tip notice colour - inverted",
+            "type": "string",
+            "inputType": "ColourPicker",
+            "default": "#FFFFFF"
+          },
+          "notice-warn": {
+            "title": "Warn notice colour",
+            "type": "string",
+            "inputType": "ColourPicker",
+            "default": "#ff0000"
+          },
+          "notice-warn-inverted": {
+            "title": "Warn notice colour - inverted",
+            "type": "string",
+            "inputType": "ColourPicker",
+            "default": "#FFFFFF"
           }
         }
       }
