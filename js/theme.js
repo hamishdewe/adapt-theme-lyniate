@@ -434,6 +434,7 @@ version: ${Adapt.device.version}`);
       let student_id = api.get('cmi.core.student_id')
       let student_name= api.get('cmi.core.student_name')
       let lesson_location = api.get('cmi.core.lesson_location')
+      let lesson_mode = api.get('cmi.core.lesson_mode')
       let credit = api.get('cmi.core.credit')
       let lesson_status = api.get('cmi.core.lesson_status')
       let entry = api.get('cmi.core.entry')
@@ -442,6 +443,7 @@ version: ${Adapt.device.version}`);
       view.model.attributes._cmi.core.student_id = typeof(student_id) !== undefined ? student_id : null
       view.model.attributes._cmi.core.student_name = typeof(student_name) !== undefined ? student_name : null
       view.model.attributes._cmi.core.lesson_location = typeof(lesson_location) !== undefined ? lesson_location : null
+      view.model.attributes._cmi.core.lesson_mode = typeof(lesson_mode) !== undefined ? lesson_mode : null
       view.model.attributes._cmi.core.credit = typeof(credit) !== undefined ? credit : null
       view.model.attributes._cmi.core.lesson_status = typeof(lesson_status) !== undefined ? lesson_status : null
       view.model.attributes._cmi.core.entry = typeof(entry) !== undefined ? entry : null

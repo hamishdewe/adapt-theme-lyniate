@@ -516,31 +516,32 @@ img {
     .contents-landing-page-title-inner,
     .contents-page-title-inner {
       width: initial;
-      margin-left: 2rem;
+      margin-left: 0;
     }
     .contents-item-title {
       &-inner {
-        float: left;
+        // float: left;
       }
       padding-left: 3rem;
     }
     .contents-item-title-inner {
       width: 205px !important;
       margin-left: 0;
-      margin-left: 24px;
+      margin-right: 24px;
     }
     button.contents-landing-page-title:before {
         content: '\e927';
         float: left;
         font-family: 'vanilla';
         margin-bottom: -1rem;
+        margin-right: 0.5rem;
     }
     button.contents-page-title:before {
-        content: '\e933';
-        float: left;
-        font-family: 'vanilla';
-        margin-bottom: -1rem;
-        margin-right: -1rem;
+        // content: '\e933';
+        // float: left;
+        // font-family: 'vanilla';
+        // margin-bottom: -1rem;
+        // margin-right: -1rem;
     }
     .contents-page.active button:not(.is-disabled):not(.is-locked) {
         cursor: auto;
@@ -566,14 +567,17 @@ img {
 
 .contents {
   .contents-progress-indicator {
-    border: 1px solid @heading-color-inverted;
+    // border: 1px solid @heading-color-inverted;
     box-sizing: content-box;
+    right: 0;
+    margin: 0 3px 6px 3px;
   }
   .contents-progress-indicator-complete {
       width: 1rem !important;
       height: 1rem !important;
+      background-color: transparent !important;
       .contents-indicator-bar {
-          background-color: @heading-color-inverted !important;
+          background-color: transparent !important;
           &:before {
               content: '\e944';
               font-family: 'vanilla';
@@ -583,7 +587,7 @@ img {
       }
   }
   .contents-progress-indicator-incomplete:not(:hover) {
-    background-color: @heading-color-inverted;
+    background-color: transparent;
   }
   .contents-page.active button:not(.is-disabled):not(.is-locked) {
       cursor: pointer;
