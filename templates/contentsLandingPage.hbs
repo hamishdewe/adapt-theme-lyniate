@@ -25,7 +25,7 @@
                 <div class="contents-item-title disabled clearfix">
                     <span class="aria-label prevent-default" tabindex="0" role="button">{{_globals._accessibility._ariaLabels.locked}}. {{title}} {{#if _isComplete}}{{_globals._accessibility._ariaLabels.complete}}{{else}}{{_globals._accessibility._ariaLabels.incomplete}}{{/if}}</span>
                 {{/if}}
-
+                    <div class="contents-item-title-inner accessible-text-block h5">
                     {{#if _isInteractionComplete}}
                         <div class="contents-progress-indicator contents-progress-indicator-{{#if _isInteractionComplete}}complete{{else}}incomplete{{/if}}">
                             <div class="contents-indicator-bar">
@@ -43,7 +43,7 @@
                             </div>
                         {{/if}}
                     {{/if}}
-                    <div class="contents-item-title-inner accessible-text-block h5">
+                    
                     {{{title}}}
                     </div>
                 {{#if _isVisible}}
