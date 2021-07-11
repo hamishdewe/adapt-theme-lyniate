@@ -2,13 +2,42 @@
 
   {{> component this}}
 
-  <div class="component__widget hotgraphic__widget{{#unless _useGraphicsAsPins}} is-pin{{else}} is-tile{{/unless}}{{#if _graphic.attribution}} has-attribution{{/if}}">
+  <figure class="image hotgraphic__figure">
+    <div class="component__widget hotgraphic__widget{{#unless _useGraphicsAsPins}} is-pin{{else}} is-tile{{/unless}}{{#if _graphic.attribution}} has-attribution{{/if}}">
 
     {{#unless _useGraphicsAsPins}}
-    <figure class="image">
       <img class="hotgraphic__image" src="{{_graphic.src}}" {{#if _graphic.alt}}aria-label="{{{_graphic.alt}}}"{{else}}aria-hidden="true"{{/if}}>
-      <figcaption>{{_graphic.alt}}</figcaption>
-    </figure>
+      <div class="hotgraphic__pin-item-container" role="list">
+
+          {{#each _items}}
+          <div class="hotgraphic__pin-item" role="listitem">
+
+            <button class="btn-icon hotgraphic__pin item-{{@index}}{{#if _graphic._classes}} {{_graphic._classes}}{{/if}}{{#if _pin.src}} has-pin-image{{/if}}{{#if _isVisited}} is-visited{{/if}} js-hotgraphic-item-click" data-index="{{@index}}" style="top: {{{_top}}}%; left: {{{_left}}}%;">
+
+              <span class="aria-label">{{#if ../_useNumberedPins}}{{math @index "+" 1}} {{/if}}{{{compile title}}}.</span>
+
+              {{#if _pin.src}}
+              <div class="hotgraphic__pin-image-container item-{{@index}}">
+                <img class="hotgraphic__pin-image" src="{{_pin.src}}">
+              </div>
+              {{else}}
+
+              {{#if ../_useNumberedPins}}
+              <div class="hotgraphic__pin-number" aria-hidden="true">
+                {{math @index "+" 1}}
+              </div>
+              {{else}}
+              <div class="icon"></div>
+              {{/if}}
+
+              {{/if}}
+
+            </button>
+
+          </div>
+          {{/each}}
+
+        </div>
     {{#if _graphic.attribution}}
     <div class="component__attribution hotgraphic__attribution">
       <div class="component__attribution-inner hotgraphic__attribution-inner">
@@ -17,37 +46,7 @@
     </div>
     {{/if}}
 
-    <div class="hotgraphic__pin-item-container" role="list">
-
-      {{#each _items}}
-      <div class="hotgraphic__pin-item" role="listitem">
-
-        <button class="btn-icon hotgraphic__pin item-{{@index}}{{#if _graphic._classes}} {{_graphic._classes}}{{/if}}{{#if _pin.src}} has-pin-image{{/if}}{{#if _isVisited}} is-visited{{/if}} js-hotgraphic-item-click" data-index="{{@index}}" style="top: {{{_top}}}%; left: {{{_left}}}%;">
-
-          <span class="aria-label">{{#if ../_useNumberedPins}}{{math @index "+" 1}} {{/if}}{{{compile title}}}.</span>
-
-          {{#if _pin.src}}
-          <div class="hotgraphic__pin-image-container item-{{@index}}">
-            <img class="hotgraphic__pin-image" src="{{_pin.src}}">
-          </div>
-          {{else}}
-
-          {{#if ../_useNumberedPins}}
-          <div class="hotgraphic__pin-number" aria-hidden="true">
-            {{math @index "+" 1}}
-          </div>
-          {{else}}
-          <div class="icon"></div>
-          {{/if}}
-
-          {{/if}}
-
-        </button>
-
-      </div>
-      {{/each}}
-
-    </div>
+    
 
     {{else}}
 
@@ -71,5 +70,6 @@
     {{/unless}}
 
   </div>
-
+  <figcaption>{{_graphic.alt}}</figcaption>
+  </figure>
 </div>

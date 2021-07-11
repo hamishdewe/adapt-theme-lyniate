@@ -937,6 +937,21 @@
                       "help": "Notification body"
                     }
                   }
+                },
+                "_contents": {
+                  "type": "object",
+                  "required": false,
+                  "legend": "Contents",
+                  "properties": {
+                    "_image": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Background image - used in contents"
+                    }
+                  }
                 }
               }
             }

@@ -3,7 +3,11 @@
     <div class='contents-page'>
     {{#compare @index '==' 0}}
     <button class='contents-landing-page-title'>
-      <div class='contents-landing-page-title-inner'>{{contentObject.attributes.displayTitle}}</div>
+      {{#if contentObject.attributes._lyniate._contents._image}}
+        <div class='contents-landing-page-title-inner has-bg-image' style='background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("{{contentObject.attributes._lyniate._contents._image}}")'>{{contentObject.attributes.displayTitle}}</div>
+      {{else}}
+        <div class='contents-landing-page-title-inner'>{{contentObject.attributes.displayTitle}}</div>
+      {{/if}}
     </button>
     {{/compare}}
     {{#compare @index '>=' '1'}}

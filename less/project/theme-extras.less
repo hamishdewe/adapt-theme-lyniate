@@ -261,12 +261,112 @@
 
 @keyframes item-pulse-animation {
   0% {
-    background-color: @item-color;
+    background-color: darken(@item-color, 10%);
+  }
+  10% {
+    background-color: darken(@item-color, 10%);
   }
   50% {
-    background-color: lighten(@item-color, 15%);
+    background-color: lighten(@item-color, 5%);
+  }
+  90% {
+    background-color: darken(@item-color, 10%);
   }
   100% {
-    background-color: @item-color;
+    background-color: darken(@item-color, 10%);
   }
+}
+
+/* Add pointers to hotgraphic pins */
+button.hotgraphic__pin {
+    &.pointer-north,
+    &.pointer-n,
+    &.pointer-top,
+    &.pointer-0deg {
+        border-radius: 50% 0 50% 50%;
+        transform: rotate(-45deg);
+        .hotgraphic__pin-number {
+            transform: rotate(45deg);
+        }
+    }
+    &.pointer-northeast,
+    &.pointer-ne,
+    &.pointer-top-right,
+    &.pointer-45deg {
+        border-radius: 50% 0 50% 50%;
+    }
+    &.pointer-east,
+    &.pointer-e,
+    &.pointer-right,
+    &.pointer-90deg {
+        border-radius: 50% 50% 0 50%;
+        transform: rotate(-45deg);
+        .hotgraphic__pin-number {
+            transform: rotate(45deg);
+        }
+    }
+    &.pointer-southeast,
+    &.pointer-se,
+    &.pointer-bottom-right,
+    &.pointer-135deg {
+        border-radius: 50% 50% 0 50%;
+    }
+    &.pointer-south,
+    &.pointer-s,
+    &.pointer-bottom,
+    &.pointer-180deg {
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        .hotgraphic__pin-number {
+            transform: rotate(45deg);
+        }
+    }
+    &.pointer-southwest,
+    &.pointer-sw,
+    &.pointer-bottom-left,
+    &.pointer-225deg {
+        border-radius: 50% 50% 50% 0;
+    }
+    &.pointer-west,
+    &.pointer-w,
+    &.pointer-left,
+    &.pointer-270deg {
+        border-radius: 0 50% 50% 50%;
+        transform: rotate(-45deg);
+        .hotgraphic__pin-number {
+            transform: rotate(45deg);
+        }
+    }
+    &.pointer-northwest,
+    &.pointer-nw,
+    &.pointer-top-left,
+    &.pointer-315deg {
+        border-radius: 0 50% 50% 50%;
+    }
+}
+
+.flex-column,
+.flex-columns {
+    .component__container {
+        display: flex;
+        flex-direction: column;
+        .component {
+            width: 100%;
+            max-width: 100%;
+            &.is-left {
+                padding-right: 0;
+            }
+            &.is-right {
+                padding-left: 0;
+            }
+        }
+    }
+    &.hotgraphic-popup__item {
+        flex-direction: column;
+        .hotgraphic-popup__item-content,
+        .hotgraphic-popup__item-image-container {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
 }

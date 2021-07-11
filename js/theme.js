@@ -27,10 +27,6 @@ define([
         console.log('after-highlight after replace', env);
       }
     });
-    // var components = $('div.component:not(.no-prism):not(.prism-preformatted)');
-    // $(components).each((idx, component) => {
-    //   Prism.highlightAllUnder(component, false, );
-    // });
     PrismHighlightAll();
     
     // Remove extraneous spaces from formatted code blocks
@@ -58,7 +54,7 @@ define([
       // Populate Fancybox
       $(document).ready(function () {
         $().fancybox({
-            selector: 'figure, :not(figure) > img, .lightbox',
+            selector: 'figure:not(.hotgraphic__figure), img:not(.hotgraphic__image), .lightbox',
             arrows: false,
             infobar: false,
             toolbar: false
@@ -449,7 +445,6 @@ version: ${Adapt.device.version}`);
       view.model.attributes._cmi.core.entry = typeof(entry) !== undefined ? entry : null
     }
   }
-
   
   function updateOnScreenClasses(view) {
     var contentObject = view.model

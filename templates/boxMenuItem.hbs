@@ -1,7 +1,10 @@
 {{import_globals}}
 
 <div class="menu-item__inner boxmenu-item__inner">
-
+  <div class="menu-item__progress boxmenu-item__progress js-menu-item-progress">
+    {{!-- Menu item progress bar will render in here --}}
+  </div>
+  
   {{#if _graphic.src}}
   <div class="menu-item__image-container boxmenu-item__image-container">
     <img class="menu-item__image boxmenu-item__image" src="{{_graphic.src}}" aria-hidden="true">
@@ -42,10 +45,6 @@
         </div>
         {{/if}}
 
-        <div class="menu-item__progress boxmenu-item__progress js-menu-item-progress">
-          {{!-- Menu item progress bar will render in here --}}
-        </div>
-
         <div class="menu-item__button-container boxmenu-item__button-container">
           <button class="btn-text menu-item__button boxmenu-item__button js-btn-click{{#if _isVisited}} is-visited{{/if}}{{#if _isLocked}} is-locked{{/if}}" aria-label="{{#if _isVisited}}{{_globals._accessibility._ariaLabels.visited}}{{/if}} {{linkText}}"{{#if _isLocked}} disabled="disabled"{{/if}}>
             {{{linkText}}}
@@ -54,4 +53,5 @@
       </div>
     </div>
   </div>
+  
 </div>
